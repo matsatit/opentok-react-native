@@ -335,10 +335,12 @@ public class OTSessionManager extends ReactContextBaseJavaModule
     public void getSessionInfo(Callback callback) {
 
         Session mSession = sharedState.getSession();
-        WritableMap sessionInfo = EventUtils.prepareJSSessionMap(mSession);
-        sessionInfo.putString("sessionId", mSession.getSessionId());
-        sessionInfo.putInt("connectionStatus", getConnectionStatus());
-        callback.invoke(sessionInfo);
+        if(mSession!=null){
+                WritableMap sessionInfo = EventUtils.prepareJSSessionMap(mSession);
+                sessionInfo.putString("sessionId", mSession.getSessionId());
+                sessionInfo.putInt("connectionStatus", getConnectionStatus());
+                callback.invoke(sessionInfo);
+        }
     }
 
     @ReactMethod
