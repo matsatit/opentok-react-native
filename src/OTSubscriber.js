@@ -53,7 +53,8 @@ export default class OTSubscriber extends Component {
         handleError(error);
       } else {
         this.setState({
-          streams: [...this.state.streams, stream.streamId],
+//           streams: [...this.state.streams, stream.streamId],
+          streams: [stream.streamId, ...this.state.streams],
         });
       }
     });
