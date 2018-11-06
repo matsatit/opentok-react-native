@@ -27,7 +27,10 @@ public class OTPublisherLayout extends FrameLayout{
     public void createPublisherView(String publisherId) {
 
         ConcurrentHashMap<String, Publisher> mPublishers = sharedState.getPublishers();
-        Publisher mPublisher = mPublishers.get(publisherId);        
+        Publisher mPublisher = mPublishers.get(publisherId);
+         if (mPublisher == null) {
+            return;
+        }
         mPublisher.setStyle(BaseVideoRenderer.STYLE_VIDEO_SCALE,
                 BaseVideoRenderer.STYLE_VIDEO_FILL);
         FrameLayout mPublisherViewContainer = new FrameLayout(getContext());
